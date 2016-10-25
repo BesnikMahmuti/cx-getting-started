@@ -6,6 +6,7 @@
   width: 400px;
   margin: auto;
   margin-top: 20px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .csb-todo {
@@ -14,7 +15,6 @@
 
   h1 {
     color: #2447ff;
-    font-family: 'Open Sans', sans-serif;
     font-size: 24px;
     font-weight: normal;
     border-bottom: 1px solid #ccc
@@ -41,7 +41,7 @@
   }
 
   & > button {
-    @extend %cxe-field-clear;
+    @include cxe-field-clear;
     color: transparent;
     right: 0;
   }
