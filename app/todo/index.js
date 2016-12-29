@@ -1,8 +1,4 @@
-import {HtmlElement} from 'cx/ui/HtmlElement';
-import {Repeater} from 'cx/ui/Repeater';
-import {TextField} from 'cx/ui/form/TextField';
-import {Checkbox} from 'cx/ui/form/Checkbox';
-import {Button} from 'cx/ui/Button';
+import { HtmlElement, Repeater, TextField, Checkbox, Button } from 'cx/widgets';
 import Controller from './Controller';
 
 export default <cx>
@@ -25,7 +21,9 @@ export default <cx>
                         <Checkbox class={{ "css-task-done": {bind: '$record.done'} }}
                                 text:tpl="{$record.text}" value:bind="$record.done"/>
                         
-                        <button onClick="onRemove" text="x"/>
+                        <Button onClick="onRemove" mod="hollow">
+                            &times;
+                        </Button>
                     </li>
                 </Repeater>
             </ul>

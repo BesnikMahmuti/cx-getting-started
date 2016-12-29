@@ -1,6 +1,6 @@
-import {startAppLoop} from 'cx/app/startAppLoop';
-import {Store} from 'cx/data/Store';
-import {HtmlElement} from 'cx/ui/HtmlElement';
+import { startAppLoop } from 'cx/ui';
+import { Store } from 'cx/data';
+import { HtmlElement } from 'cx/widgets';
 import Todo from './todo';
 
 require('./index.scss');

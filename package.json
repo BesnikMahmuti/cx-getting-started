@@ -24,8 +24,8 @@
   },
   "homepage": "https://gitlab.com/codaxy/cx-getting-started#README",
   "dependencies": {
-    "cx-core": "^16.8.12",
-    "cx-react": "^16.8.2"
+    "cx-core": "^16.12.13",
+    "cx-react": "^16.12.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
