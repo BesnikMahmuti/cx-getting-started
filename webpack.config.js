@@ -10,50 +10,61 @@ module.exports = {
             app: path.join(__dirname, 'app')
         }
     },
-
     module: {
-        loaders: [{
-            test: /\.js$/,
-            // Add any ES6 based libraries here:
-            include: /(app|cx-core|cx)/,
-            loader: 'babel',
-            query: {
-                "cacheDirectory": true,
-                "cacheIdentifier": "v1",
-                "presets": ["es2015-loose", "stage-0"],
-                "plugins": [
-                    "transform-decorators-legacy",
-                    ["transform-es2015-classes", {"loose": true}],
-                    ["babel-plugin-transform-react-jsx", {"pragma": "VDOM.createElement"}],
-                    "babel-plugin-cx"
-                ]
-            }
-        }, {
-            test: /\.scss$/,
-            loaders: ["style", "css", "sass"]            
-        }, {
-            test: /\.css$/,
-            loader: ["style", "css"]            
-        }]
+        loaders: [
+            {
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
+            }, 
+            {
+                test: /\.css$/,
+                loader: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.js$/,
+                // Add any ES6 based libraries here:
+                include: /(app|cx-core|cx)/,
+                loader: 'babel-loader',
+                query: {
+                    cacheDirectory: true,
+                    cacheIdentifier: "v1",
+                    presets: [
+                        ["cx-env", {
+                            targets: {
+                                chrome: 50,
+                                ie: 11,
+                                ff: 30,
+                                edge: 12,
+                                safari: 9
+                            },
+                            modules: false,
+                            loose: true,
+                            useBuiltIns: true,
+                            cx: {
+                                imports: {
+                                    useSrc: true
+                                }
+                            }
+                        }]
+                    ],
+                    "plugins": []
+                }
+            }]
     },
-
     entry: {
         app: path.join(__dirname, 'app/index.js')
     },
-
+    output: {
+        path: path.join(__dirname, 'dist/'),
+        filename: '[name].js',
+        publicPath: '/'
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'app/index.html')
         })        
     ],
-
-    output: {
-        path: path.join(__dirname, 'dist/'),
-        filename: '[name].js',
-        publicPath: '/'
-    },
-
     devtool: 'eval',
     devServer: {
         hot: true,
