@@ -6,7 +6,7 @@ const webpack = require('webpack'),
 module.exports = {
     resolve: {
         alias: {
-            cx: path.join(__dirname, 'node_modules/cx-core/src/'),
+            // cx: path.join(__dirname, 'node_modules/cx-core/src/'),
             app: path.join(__dirname, 'app')
         }
     },
@@ -23,7 +23,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 // Add any ES6 based libraries here:
-                include: /(app|cx-core|cx)/,
+                include: /(app|cx)/,
                 loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
